@@ -9,9 +9,14 @@ interface AppProps {
 }
  
 interface AppState {
-  counters: []
+  counters: Counter[]
+  // counters: {id:number, value:number, liked:boolean}[]
 }
  
+type Counter = {
+  id:number, value:number, liked:boolean
+}
+
 class App extends Component<AppProps, AppState> {
   constructor(props: AppProps) {
     super(props);
@@ -43,6 +48,7 @@ class App extends Component<AppProps, AppState> {
       .then((response) => {
         const counters = [...this.state.counters];
         const deletedCounter = counters.find((c) => c.id === counterId);
+        if (deletedCounter === undefined) throw new Error("not found");
         const index = counters.indexOf(deletedCounter);
         counters.splice(index, 1);
         this.setState({ counters: counters });
