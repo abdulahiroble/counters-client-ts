@@ -1,4 +1,11 @@
-const Navbar = (props) => {
+import React from 'react';
+
+type Props = {
+  totalCounters: number,
+  totalLikes: number,
+};
+
+const Navbar:React.FC<Props> = ({totalCounters,totalLikes}) => {
   return (
     <div>
       <nav className="navbar navbar-light bg-light">
@@ -7,10 +14,10 @@ const Navbar = (props) => {
             <h1>
               Navbar{" "}
               <span className="badge rounded-pill bg-primary">
-                Active counters: {props.totalCounters}
+                Active counters: {totalCounters}
               </span>
               <span className="badge rounded-pill bg-primary m-2">
-                Liked counters: {props.totalLikes}
+                Liked counters: {totalLikes}
               </span>
             </h1>
           </a>

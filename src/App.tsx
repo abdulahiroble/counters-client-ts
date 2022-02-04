@@ -4,17 +4,16 @@ import Counters from "./components/counters";
 import React, { Component } from "react";
 import CountersService from "./services/countersHttpService";
 
+type Counter = {
+  id:number, value:number, liked:boolean
+}
+
 interface AppProps {
   
 }
  
 interface AppState {
   counters: Counter[]
-  // counters: {id:number, value:number, liked:boolean}[]
-}
- 
-type Counter = {
-  id:number, value:number, liked:boolean
 }
 
 class App extends Component<AppProps, AppState> {

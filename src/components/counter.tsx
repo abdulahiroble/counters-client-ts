@@ -1,7 +1,16 @@
 import React, { Component } from "react";
 import Like from "./standard/like";
+import {CounterType} from "../types"
 
-class Counter extends Component {
+interface CounterProps {
+  counter:CounterType,
+  onDecrement: Function, 
+  onIncrement: Function, 
+  onDelete: Function, 
+  onLike: Function,
+}
+
+class Counter extends Component<CounterProps> {
   disableDecrementButton() {
     return this.props.counter.value > 0 ? false : true;
   }
