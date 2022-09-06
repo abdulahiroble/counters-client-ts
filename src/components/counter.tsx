@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import Like from "./standard/like";
-import {CounterType} from "../types"
+import ICounter from "../models/counter";
 
 interface CounterProps {
-  counter:CounterType,
-  onDecrement: Function, 
-  onIncrement: Function, 
-  onDelete: Function, 
-  onLike: Function,
+  counter: ICounter;
+  onDecrement: Function;
+  onIncrement: Function;
+  onDelete: Function;
+  onLike: Function;
 }
 
 class Counter extends Component<CounterProps> {

@@ -1,5 +1,5 @@
 import axios from "axios";
-import {CounterType} from "../types"
+import ICounter from "../models/counter";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
@@ -16,23 +16,23 @@ class CountersService {
     return axios.post("counters");
   }
 
-  delete(id:number) {
+  delete(id: number) {
     return axios.delete("counters/" + id);
   }
 
-  increment(counter:CounterType) {
+  increment(counter: ICounter) {
     const incrementedCounter = { ...counter };
     incrementedCounter.value++;
     return axios.put("counters/" + counter.id, incrementedCounter);
   }
 
-  decrement(counter: CounterType) {
+  decrement(counter: ICounter) {
     const decrementedCounter = { ...counter };
     decrementedCounter.value--;
     return axios.put("counters/" + counter.id, decrementedCounter);
   }
 
-  like(counter: CounterType) {
+  like(counter: ICounter) {
     const likedCounter = { ...counter };
     likedCounter.liked = !likedCounter.liked;
     console.log(likedCounter);

@@ -3,17 +3,16 @@ import Navbar from "./components/navbar";
 import Counters from "./components/counters";
 import React, { Component } from "react";
 import CountersService from "./services/countersHttpService";
+import Counter from "./models/counter";
 
-type Counter = {
-  id:number, value:number, liked:boolean
-}
+// type Counter = {
+//   id:number, value:number, liked:boolean
+// }
 
-interface AppProps {
-  
-}
- 
+interface AppProps {}
+
 interface AppState {
-  counters: Counter[]
+  counters: Counter[];
 }
 
 class App extends Component<AppProps, AppState> {
@@ -29,7 +28,7 @@ class App extends Component<AppProps, AppState> {
     console.log("App component mounted");
   }
 
-  retrieveCounters = () => {
+  retrieveCounters = (): void => {
     CountersService.getAll()
       .then((response) => {
         this.setState({
@@ -42,7 +41,7 @@ class App extends Component<AppProps, AppState> {
       });
   };
 
-  handleDelete = (counterId: number) => {
+  handleDelete = (counterId: number): void => {
     CountersService.delete(counterId)
       .then((response) => {
         const counters = [...this.state.counters];
@@ -57,7 +56,7 @@ class App extends Component<AppProps, AppState> {
       });
   };
 
-  handleDeleteAll = () => {
+  handleDeleteAll = (): void => {
     CountersService.deleteAll()
       .then((response) => {
         this.setState({
@@ -70,7 +69,7 @@ class App extends Component<AppProps, AppState> {
       });
   };
 
-  handleDecrement = (counter: any) => {
+  handleDecrement = (counter: Counter): void => {
     CountersService.decrement(counter)
       .then((response) => {
         console.log("response: ", response.data);
@@ -86,7 +85,7 @@ class App extends Component<AppProps, AppState> {
       });
   };
 
-  handleIncrement = (counter: any) => {
+  handleIncrement = (counter: Counter): void => {
     CountersService.increment(counter)
       .then((response) => {
         console.log("response: ", response.data);
@@ -102,7 +101,7 @@ class App extends Component<AppProps, AppState> {
       });
   };
 
-  handleReset = () => {
+  handleReset = (): void => {
     CountersService.resetAll()
       .then((response) => {
         this.setState({ counters: response.data });
@@ -112,7 +111,7 @@ class App extends Component<AppProps, AppState> {
       });
   };
 
-  handleAddCounter = () => {
+  handleAddCounter = (): void => {
     CountersService.add()
       .then((response) => {
         const counters = [...this.state.counters];
@@ -125,7 +124,7 @@ class App extends Component<AppProps, AppState> {
       });
   };
 
-  handleLike = (counter: any) => {
+  handleLike = (counter: Counter): void => {
     CountersService.like(counter)
       .then((response) => {
         console.log("response: ", response.data);
@@ -165,13 +164,6 @@ class App extends Component<AppProps, AppState> {
       </React.Fragment>
     );
   }
-
 }
- 
+
 export default App;
-
-
-
-
-
-
