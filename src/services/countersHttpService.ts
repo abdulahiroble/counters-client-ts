@@ -5,7 +5,7 @@ axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 class CountersService {
   getAll() {
-    return axios.get("counters");
+    return axios.get<ICounter[]>("counters");
   }
 
   deleteAll() {
@@ -13,7 +13,7 @@ class CountersService {
   }
 
   add() {
-    return axios.post("counters");
+    return axios.post<ICounter>("counters");
   }
 
   delete(id: number) {
