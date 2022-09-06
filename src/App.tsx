@@ -5,10 +5,6 @@ import React, { Component } from "react";
 import CountersService from "./services/countersHttpService";
 import Counter from "./models/counter";
 
-// type Counter = {
-//   id:number, value:number, liked:boolean
-// }
-
 interface AppProps {}
 
 interface AppState {
